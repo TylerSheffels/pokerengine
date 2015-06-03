@@ -12,11 +12,16 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
+  api.use(['underscore']);
   api.addFiles('poker-engine.js');
+  api.addFiles('game.js');
+
+  //Expose things
+  api.export('PokerEngine');
 });
 
 Package.onTest(function(api) {
-  api.use('tinytest');
+  api.use(['tinytest', 'underscore']);
   api.use('poker-engine');
-  api.addFiles('poker-engine-tests.js');
+  api.addFiles('poker-engine-tests.js', 'server');
 });
